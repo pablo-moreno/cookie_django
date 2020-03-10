@@ -1,0 +1,16 @@
+[
+   {
+      "model":"chat.chat",
+      "pk": 1,
+      "fields": {
+         "uuid": "bd51df23-c85f-41f0-9a07-f29ed787cca1",
+         "name": "Spooky Dev",
+         "description": "Spooky Dev Chat Group",
+         "admin": 1,
+         "creation_date": "2019-12-20T17:36:15.644Z",
+         "members": [
+            1
+         ]
+      }
+   }
+]
