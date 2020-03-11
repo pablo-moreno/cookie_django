@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/pablo-moreno/geopython:latest
+FROM {{ cookiecutter.base_docker_image }}
 
 WORKDIR /app
 COPY . /app
