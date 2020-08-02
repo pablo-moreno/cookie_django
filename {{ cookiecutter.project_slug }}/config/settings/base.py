@@ -20,11 +20,9 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
 ]
 
 THIRD_PARTY_APPS = [
-    'oauth2_provider',
     'corsheaders',
     'django_extensions',
     'channels',
