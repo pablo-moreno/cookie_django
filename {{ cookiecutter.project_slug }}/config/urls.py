@@ -9,7 +9,6 @@ from .views import index, health_check
 urlpatterns = [
     path('', index, name='index'),
     path('admin/', admin.site.urls),
-    path('api/chats/', include('chat.urls', namespace='chats')),
     path('api/auth/', include('authentication.urls', namespace='authentication')),
     path('healthy', health_check, name='healthy'),
 ]
