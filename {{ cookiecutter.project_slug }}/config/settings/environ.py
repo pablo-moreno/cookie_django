@@ -10,6 +10,7 @@ POSTGRES_USER = os.environ.get('POSTGRES_USER', 'postgres')
 POSTGRES_PASSWORD = os.environ.get('POSTGRES_PASSWORD', '')
 DATABASE_HOST = os.environ.get('DATABASE_HOST', 'postgres')
 DATABASE_PORT = os.environ.get('DATABASE_PORT', 5432)
+DATABASE_URL = os.environ.get('DATABASE_URL', f'postgres://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{DATABASE_HOST}:{DATABASE_PORT}/{POSTGRES_DB}')
 
 STATIC_ROOT = os.environ.get('STATIC_ROOT', 'static')
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', 'media')
