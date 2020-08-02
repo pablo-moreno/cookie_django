@@ -1,5 +1,6 @@
 import datetime
 from .environ import *
+import dj_database_url
 
 # Build paths inside the config like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -30,7 +31,6 @@ THIRD_PARTY_APPS = [
 ]
 
 PROJECT_APPS = [
-    'chat',
     'authentication',
     'utils',
 ]
@@ -78,14 +78,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': POSTGRES_DB,
-        'USER': POSTGRES_USER,
-        'PASSWORD': POSTGRES_PASSWORD,
-        'HOST': DATABASE_HOST,
-        'PORT': DATABASE_PORT,
-    }
+    'default': dj_database_url.parse(DATABASE_URL),
 }
 
 # Password validation

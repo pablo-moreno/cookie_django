@@ -1,5 +1,7 @@
 {
     "project_slug": "django",
+    "description": "description",
+    "author": "Pablo Moreno <pablomoreno.inf@gmail.com>",
     "base_docker_image": "registry.gitlab.com/pablo-moreno/geopython:latest",
     "builder_image": "registry.gitlab.com/pablo-moreno/builder"
 }

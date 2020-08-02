@@ -141,5 +141,6 @@ spooky_*/
 .idea/
 
 src/
+.poetry.lock
 
 # End of https://www.gitignore.io/api/django
