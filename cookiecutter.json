@@ -1,4 +1,5 @@
 {
+    "project_name": "Django",
     "project_slug": "django",
     "description": "description",
     "author": "Pablo Moreno <pablomoreno.inf@gmail.com>",

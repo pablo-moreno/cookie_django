@@ -1,6 +1,23 @@
-# Django Setup
+# {{ cookiecutter.project_name }}
 
-This is a Django setup project, configured with CI/CD for testing and auto-deployment.
+This is {{ cookiecutter.project_name }}, configured with CI/CD for testing and auto-deployment.
+
+## Development
+
+Run the development environment with Docker Compose
+
+```sh
+docker-compose up
+```
+
+You can create or apply migrations from the Django container:
+
+```sh
+docker exec -it <container_name> bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
 
 ## Gitlab Environment Variables
 
