@@ -1,5 +1,9 @@
 # {{ cookiecutter.project_name }}
 
+![pic]({{ cookiecutter.repository_url }}/badges/master/coverage.svg)
+![pic]({{ cookiecutter.repository_url }}/badges/master/pipeline.svg)
+
+
 This is {{ cookiecutter.project_name }}, configured with CI/CD for testing and auto-deployment.
 
 ## Development
