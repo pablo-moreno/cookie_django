@@ -1,0 +1,26 @@
+---
+version: "2"
+plugins:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - python
+  fixme:
+    enabled: true
+exclude_patterns:
+- config/
+- db/
+- dist/
+- features/
+- script/
+- "**/spec/"
+- "**/test/"
+- "**/tests/"
+- Tests/
+- "**/vendor/"
+- "**/*.min.js"
+- "**/*.min.css"
+- "**/__tests__/"
+- "**/__mocks__/"
+- "**/migrations/*"
