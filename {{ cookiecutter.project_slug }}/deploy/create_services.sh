@@ -40,4 +40,4 @@ docker service create \
   --mount src={{ cookiecutter.project_slug }}_static,dst=/app/static \
   --entrypoint "./runserver.sh" \
   --with-registry-auth \
-  registry.gitlab.com/pablo-moreno/{{ cookiecutter.project_slug }}-back:latest
+  {{ cookiecutter.project_image_name }}:latest

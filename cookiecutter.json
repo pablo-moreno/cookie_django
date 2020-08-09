@@ -3,8 +3,9 @@
     "project_slug": "django",
     "description": "description",
     "author": "Pablo Moreno <pablomoreno.inf@gmail.com>",
-    "base_docker_image": "registry.gitlab.com/pablo-moreno/geopython:latest",
-    "builder_image": "registry.gitlab.com/pablo-moreno/builder",
+    "base_docker_image": "python:3.8-slim",
+    "builder_image": "docker:19.03.1-dind",
     "repository_url": "",
-    "site_url": ""
+    "site_url": "",
+    "project_image_name": "django"
 }
