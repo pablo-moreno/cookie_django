@@ -45,6 +45,8 @@ build_branch_image:
   extends: .slack
   services:
     - docker:19.03.1-dind
+  needs: 
+    - run_tests
   only:
     - develop
     - master
@@ -70,6 +72,8 @@ build_tag_image:
   extends: .slack
   services:
     - docker:19.03.1-dind
+  needs:
+    - run_tests
   only:
     - tags
 
