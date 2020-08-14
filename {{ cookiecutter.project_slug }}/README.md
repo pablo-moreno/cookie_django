@@ -63,7 +63,7 @@ docker run -d \
 You must setup as much environment variables as you need.
 
 
-## Gitlab Environment Variables
+## :gear: Gitlab Environment Variables
 
 Setup CI/CD variables on Settings > CI / CD > Variables.
 
