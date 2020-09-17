@@ -141,6 +141,7 @@ spooky_*/
 .idea/
 
 src/
+data/
 poetry.lock
 report.xml
 
