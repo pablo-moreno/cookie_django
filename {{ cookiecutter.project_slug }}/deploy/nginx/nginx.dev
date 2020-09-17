@@ -1,0 +1,30 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	# reverse proxy
+	location / {
+		proxy_pass http://django:8000;
+	}
+
+	location /api {
+		proxy_pass http://django:8000;
+	}
+
+	location /healthy {
+		proxy_pass http://django:8000;
+	}
+
+    location /admin {
+		proxy_pass http://django:8000;
+ 	}
+
+    # CDN
+	location /media/ {
+		alias /var/www/backend/media/;
+	}
+
+	location /static/ {
+		alias /var/www/backend/static/;
+	}
+}
