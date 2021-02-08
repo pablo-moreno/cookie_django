@@ -5,6 +5,10 @@ import dj_database_url
 # Build paths inside the config like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+DOMAIN = '{{ cookiecutter.domain }}'
+BASE_URL = f'https://{DOMAIN}'
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,10 +30,12 @@ THIRD_PARTY_APPS = [
     'corsheaders',
     'django_extensions',
     'channels',
+    'minio_storage',
 ]
 
 PROJECT_APPS = [
     'authentication',
+    'chat',
     'utils',
 ]
 
@@ -119,6 +125,17 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_ROOT)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_ROOT)
+
+if USE_MINIO_STORAGE:
+    DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
+    STATICFILES_STORAGE = "minio_storage.storage.MinioStaticStorage"
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = 'media'
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+    MINIO_STORAGE_STATIC_BUCKET_NAME = 'static'
+    MINIO_STORAGE_AUTO_CREATE_STATIC_BUCKET = True
+    MINIO_STORAGE_MEDIA_URL = os.path.join(BASE_URL, 'media')
+    MINIO_STORAGE_STATIC_URL = os.path.join(BASE_URL, 'static')
+
 
 # Django Rest Framework Configuration
 
