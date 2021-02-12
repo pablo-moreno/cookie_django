@@ -19,3 +19,12 @@ REDIS_HOST = os.environ.get('REDIS_HOST', 'redis')
 REDIS_PORT = os.environ.get('REDIS_PORT', 6379)
 
 PAGE_SIZE = os.environ.get('PAGE_SIZE', 20)
+
+# Minio
+USE_MINIO_STORAGE = os.environ.get('USE_MINIO_STORAGE', 'FALSE') == 'TRUE'
+
+if USE_MINIO_STORAGE:
+    MINIO_STORAGE_ENDPOINT = os.environ.get('MINIO_STORAGE_ENDPOINT', 's3:9000')
+    MINIO_STORAGE_ACCESS_KEY = os.environ.get('MINIO_STORAGE_ACCESS_KEY', 'access_key')
+    MINIO_STORAGE_SECRET_KEY = os.environ.get('MINIO_STORAGE_SECRET_KEY', 'secret_key')
+    MINIO_STORAGE_USE_HTTPS = os.environ.get('MINIO_STORAGE_USE_HTTPS', 'FALSE') == 'TRUE'
