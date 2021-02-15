@@ -1,41 +1,23 @@
 from urllib.parse import parse_qs
-from channels.middleware import BaseMiddleware
-from django.contrib.auth.models import User
-from rest_framework_jwt.utils import jwt_decode_handler
-from rest_framework.authtoken.models import Token
+
+from channels.auth import AuthMiddlewareStack
+from utils.channels.users import get_user_by_token
 
 
-class UserMiddleware(BaseMiddleware):
+class TokenAuthMiddleware(object):
     """
-        Middleware to populate django user to the scope using the token passed in the query_string
+    Custom middleware that sets the user from a given token.
     """
-    async def resolve_scope(self, scope):
-        scope["user"]._wrapped = scope.get('user')
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        qs = parse_qs(scope["query_string"].decode("utf-8"))
+        token = qs.get("token")[0]
+        scope["user"] = await get_user_by_token(token)
+
+        return await self.app(scope, receive, send)
 
 
-class TokenMiddleware(UserMiddleware):
-    def populate_scope(self, scope):
-        qs = parse_qs(scope['query_string'].decode('utf-8'))
-        token = qs.get('token')
-
-        if not token:
-            raise ValueError('Token not found')
-
-        token = Token.objects.get(key=token)
-        user = token.user
-
-        scope['user'] = user
-
-
-class JWTTokenMiddleware(UserMiddleware):
-    def populate_scope(self, scope):
-        qs = parse_qs(scope['query_string'].decode('utf-8'))
-        token = qs.get('token')
-
-        if not token:
-            raise ValueError('Token not found')
-
-        decoded = jwt_decode_handler(token)
-        user = User.objects.get(username=decoded.get('username'))
-
-        scope['user'] = user
+def token_auth_middleware_stack(inner):
+    return TokenAuthMiddleware(AuthMiddlewareStack(inner))

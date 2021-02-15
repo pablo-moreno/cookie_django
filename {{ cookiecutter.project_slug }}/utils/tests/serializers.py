@@ -10,4 +10,7 @@ class AbstractModelSerializer(ModelSerializer):
 class DummyModelSerializer(AbstractModelSerializer):
     class Meta:
         model = DummyModel
-        fields = ('first_name', 'last_name', )
+        fields = (
+            "first_name",
+            "last_name",
+        )

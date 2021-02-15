@@ -3,12 +3,12 @@ from django.core.asgi import get_asgi_application
 from django.urls import path
 
 from chat.consumers import ChatConsumer
-from utils.channels.middleware import TokenMiddleware
+from utils.channels.middleware import TokenAuthMiddleware
 
 
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
-    'websocket': TokenMiddleware(
+    'websocket': TokenAuthMiddleware(
         URLRouter([
             path('ws/chat/', ChatConsumer),
         ])
