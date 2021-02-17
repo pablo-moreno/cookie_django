@@ -3,7 +3,7 @@ class Permission(object):
         self.scope = scope
 
     def has_permission(self, *args, **kwargs):
-        raise NotImplementedError('You must implement has_permission method!')
+        raise NotImplementedError("You must implement has_permission method!")
 
 
 class Any(Permission):
